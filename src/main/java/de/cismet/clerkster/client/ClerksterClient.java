@@ -17,6 +17,7 @@ import org.apache.commons.httpclient.methods.multipart.FilePart;
 import org.apache.commons.httpclient.methods.multipart.MultipartRequestEntity;
 import org.apache.commons.httpclient.methods.multipart.Part;
 import org.apache.commons.httpclient.params.HttpMethodParams;
+import org.apache.commons.io.IOUtils;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -120,12 +121,7 @@ public class ClerksterClient {
                 // write the response to the output file
                 response = postMethod.getResponseBodyAsStream();
                 out = new FileOutputStream(output);
-                final byte[] buffer = new byte[1024];
-                int len = response.read(buffer);
-                while (len != -1) {
-                    out.write(buffer, 0, len);
-                    len = response.read(buffer);
-                }
+                IOUtils.copy(response, out);
                 LOG.info("Received a signed file and writing was successful.");
             } else {
                 System.out.println("Could not receive a signed file: " + postMethod.getStatusText() + " - "
