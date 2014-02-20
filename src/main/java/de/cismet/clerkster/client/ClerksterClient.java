@@ -18,6 +18,7 @@ import org.apache.commons.httpclient.methods.multipart.MultipartRequestEntity;
 import org.apache.commons.httpclient.methods.multipart.Part;
 import org.apache.commons.httpclient.params.HttpMethodParams;
 import org.apache.commons.io.IOUtils;
+import org.apache.log4j.Level;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -41,7 +42,6 @@ import javax.net.ssl.KeyManager;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
-import org.apache.log4j.Level;
 
 /**
  * DOCUMENT ME!
@@ -125,8 +125,6 @@ public class ClerksterClient {
                 IOUtils.copy(response, out);
                 LOG.info("Received a signed file and writing was successful.");
             } else {
-                System.out.println("Could not receive a signed file: " + postMethod.getStatusText() + " - "
-                            + postMethod.getResponseBodyAsString());
                 LOG.warn("Could not receive a signed file: " + postMethod.getStatusText() + " - "
                             + postMethod.getResponseBodyAsString());
             }
