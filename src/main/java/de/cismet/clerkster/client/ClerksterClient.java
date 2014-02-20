@@ -163,6 +163,7 @@ public class ClerksterClient {
      * @param  args  DOCUMENT ME!
      */
     public static void main(final String[] args) {
+        org.apache.log4j.BasicConfigurator.configure();
         final String username = "testuser";
         final String password = "test";
         final String url = "someURL/upload";
