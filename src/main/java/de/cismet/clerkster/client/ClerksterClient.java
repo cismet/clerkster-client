@@ -164,7 +164,7 @@ public class ClerksterClient {
     public static void main(final String[] args) {
         org.apache.log4j.BasicConfigurator.configure();
         org.apache.log4j.Logger.getRootLogger().setLevel(Level.INFO);
-        
+
         final String username = "testuser";
         final String password = "test";
         final String url = "someURL/upload";
